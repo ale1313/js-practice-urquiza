@@ -1,6 +1,6 @@
 # Ejercicios de Práctica Javascript
 
-1. -[x] Realice un script que solicite el ingreso de números entre 0 y 999, verifique cuántos dígitos tiene y muestre la información por pantalla. El programa finalizará cuando el usuario ingrese el número 0. La información se mostrará de la siguiente forma:
+1. - [x] Realice un script que solicite el ingreso de números entre 0 y 999, verifique cuántos dígitos tiene y muestre la información por pantalla. El programa finalizará cuando el usuario ingrese el número 0. La información se mostrará de la siguiente forma:
     1. El número x tiene x dígito/s
     El numero x tiene x dígito/s...
     
