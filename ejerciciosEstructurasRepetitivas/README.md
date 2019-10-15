@@ -12,7 +12,7 @@
 
 3. - [x] Realiza un script que pida números hasta que se pulse “cancelar”. Si el valor ingresado no es un número, deberá indicarse con un “alert” y seguir pidiendo al usuario que ingrese otro número. Al salir con “cancelar” deberá indicarse la suma total de los números introducidos.
 
-4. - [x] Realice un script que mediante un bucle escriba en una página web los encabezamientos desde <H1> hasta <H6> y los muestre mediante el siguiente texto: “Encabezado de nivel x”, donde x es el nivel que le corresponde a cada encabezado.
+4. - [x] Realice un script que mediante un bucle escriba en una página web los encabezamientos desde `<h1>` hasta `<h6>` y los muestre mediante el siguiente texto: “Encabezado de nivel x”, donde x es el nivel que le corresponde a cada encabezado.
 
 5. - [x] Realiza un script que pida cadenas de texto hasta que se pulse “cancelar”. Al salir con “cancelar” deben mostrarse todas las cadenas concatenadas con un guión.
 
