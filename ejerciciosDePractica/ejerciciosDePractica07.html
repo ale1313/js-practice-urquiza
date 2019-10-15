@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Practica 7 Javascript</title>
+  </head>
+  <body>
+    <button onclick="employeeSalaryCounter()">Registrar sueldos</button>
+    <script>
+      const employeeSalaryCounter = () => {
+        let lowSalaryCounter = 0,
+          highSalaryCounter = 0,
+          salaryAccumulator = 0;
+        for (i = 0; i < 25; i++) {
+          let salary = prompt("Ingrese el sueldo del empleado");
+          salary > 25000 ? highSalaryCounter++ : lowSalaryCounter++;
+          salaryAccumulator += salary;
+        }
+        alert(
+          `Cantidad de empleados con sueldo < 25.000 = ${lowSalaryCounter}
+            \nCantidad de empleados con sueldo > 25.000 = ${highSalaryCounter}
+            \nGastos totales en sueldos: ${salaryAccumulator}`
+        );
+      };
+    </script>
+  </body>
+</html>
