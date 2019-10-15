@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      TEMPERATURA CONVERTER 30900
+    </h1>
+    <p>Ingresa la temperatura</p>
+    <input type=number id="tempIn"/>
+    <a>de:</a>
+    <select id="temperatureInput">
+      <option>Kelvin</option>
+      <option>Celsius</option>
+      <option>Fahrenheit</option>
+    </select>
+    <a>a:</a>
+    <select id="temperatureOutput">
+      <option>Kelvin</option>
+      <option>Celsius</option>
+      <option>Fahrenheit</option>
+    </select>
+	<button onclick={onClickHandler()}>Convert</button>
+    <p id="tempOut"></p>
+    <script>
+	function onClickHandler() {
+		let tempIn = Number(document.getElementById('tempIn').value);
+		let input = document.getElementById('temperatureInput').value;
+		let output = document.getElementById('temperatureOutput').value;
+		switch (input) {
+			case "Kelvin":
+				switch (output) {
+					case "Celsius":
+						var result = tempIn - 273.15;
+						break;
+					case "Fahrenheit":
+						var result = tempIn * 1.8 - 459.67;
+						break;
+					default:
+						alert("PUSISTE LAS MISMAS ESCALAS IMBECIL");
+				}
+				break;
+			case "Fahrenheit":
+				switch (output) {
+					case "Celsius":
+						var result = (tempIn - 32) / 1.8;
+						break;
+					case "Kelvin":
+						var result = (tempIn + 459.67) / 1.8;
+						break;
+					default: 
+						alert("PUSISTE LAS MISMAS ESCALAS IMBECIL");
+				}
+				break;
+			case "Celsius":
+				switch (output) {
+					case "Fahrenheit":
+						var result = (tempIn + 32) * 1.8;
+						break;
+					case "Kelvin":
+						var result = tempIn + 273.15;
+						break;
+					default:
+						alert("PUSISTE LAS MISMAS ESCALAS IMBECIL");
+				}
+		}
+		(input !== output) ?
+		(outputText = `${tempIn} grados ${input} es igual a ${result} grados ${output}`) :
+		(outputText = 'Intenta de nuevo');
+		document.getElementById('tempOut').innerHTML = outputText;
+	}
+    </script>
+  </body>
+</html>

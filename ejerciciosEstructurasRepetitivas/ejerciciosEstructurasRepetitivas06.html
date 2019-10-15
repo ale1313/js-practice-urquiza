@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 6 repetitiva</title>
+	<style>
+		input {
+			margin: 10px auto;
+		}
+		table {
+			border: 4px solid forestgreen;
+			border-collapse: collapse;
+			min-width: 30%;
+			margin: 10px auto;
+		}
+		tr, td {
+			border: 2px solid goldenrod;
+			min-width: 40px;
+			text-align: center;
+		}
+		h2 {
+			text-align: center;
+			font-weight: bold;
+			margin-top: 40px;
+		}
+	</style>
+</head>
+<body>
+	<h1 style='text-align: center;'>TABLES CREATOR</h1>
+	<div style='display: flex; flex-direction: column; align-items: center;'>
+		<input type=number id='rowNumber' placeholder='Numero de filas' />
+		<input type=number id='columnNumber' placeholder='Numero de columnas' />
+		<button onclick=start()>Hazme una tabla</button>
+	</div>
+	<div id='tablesContainer'></div>
+	<script>
+		let verified = null,
+		counter = 0;
+		const start = () => {
+			let rows = Number(document.getElementById('rowNumber').value);
+			let columns = Number(document.getElementById('columnNumber').value);
+			if(rows === 0) {
+				alert('Ingrese un número de filas');
+			} else if(columns === 0) {
+				alert('Ingrese un número de columnas');
+			} else if(isNaN(rows)) {
+				alert('Ingrese un valor de filas valido ');
+			} else if(isNaN(columns)) {
+				alert('Ingrese un valor de columnas valido ');
+			} else {
+				verified = true;
+				counter = rows * columns;
+			}
+			if(verified) {
+				document.getElementById('rowNumber').value = '';
+				document.getElementById('columnNumber').value = '';
+				const createRow = () => {
+					let rowElement = document.createElement('TR');
+					for(i=0;i < columns;i++) {
+						createCell(rowElement, counter);
+						counter -= 1
+					}
+					table.appendChild(rowElement);
+				}
+				const createCell = (row, counter) => {
+					let cell = document.createElement('TD');
+					let text = document.createTextNode(`${counter}`);
+					cell.appendChild(text);
+					row.appendChild(cell);
+				}	
+				let table = document.createElement('TABLE');
+				for(c=1;c <= rows;c++) {
+					createRow();
+				}
+				let header = document.createElement('H2');
+				let tableSize = `${rows} x ${columns}`;
+				let paraText = document.createTextNode(`TABLA ${tableSize}`);
+				header.appendChild(paraText);
+				let container = document.getElementById('tablesContainer');
+				container.insertBefore(table, container.childNodes[0]);
+				container.insertBefore(header, container.childNodes[0]);
+			}
+		}
+    </script>
+</body>
+</html>

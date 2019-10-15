@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 7</title>
+    <style>
+    tr, td, th, table {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    td  {
+        text-align: center;
+    }
+    div > input {
+        margin: 10px 0;
+    }
+    </style>
+</head>
+<body>
+    <h1 style='text-align: center;'>Administrator Plus Ultra: Prepare to <span style='text-decoration-line: line-through'>Lose</span> Gain Money Edition</h1>
+    <h3 style='text-align: center;'>Que deseas hacer?</h3>
+    <div style='display: flex; justify-content: center;'>
+        <button onclick=startSet(this) id='win' style='width: 20%; margin: 0 10px;'>Quiero ganar dinero</button>
+        <button onclick=startSet(this) id='lose' style='width: 20%; margin: 0 10px;'>Quiero perder dinero</button>
+        <button onclick=startSet(this) id='extrawin' style='width: 20%; margin: 0 10px;'>Quiero aprovecharme de la inflación para irme de viaje a Hawaii</button>
+    </div>
+    <br />
+    <div style='display: flex; flex-direction: column; align-items: center; justify-content: space-between;'>
+        <div style='padding-left: 64px;'>
+            <input type=number id='base' placeholder='Medida de la base' /> <label>Radio<input type="checkbox" id='radio' /></label>
+        </div>
+        <input type=number id='height' placeholder='Altura' />
+        <input type=number id='cost' placeholder='Costo del material' />
+        <button onclick="gainSetting()" id='gainButton'>Configurar ganancia</button>
+        <input type=number id='gainInput' style='display: none;' placeholder="Ganancia (en %)" />
+        <button onclick="cancelGainSetting()" id='gainCancelButton' style='display: none;'>Volver a ganancia por defecto</button>
+        <br />
+        <button id='start' onclick="startProcess()"><a id='startValue'>Ayúdame a ganar, oh sabio Administrator!</a></button>
+    </div>
+    <h2 id='output' style='text-align: center; visibility: hidden;'>Padding</h2>
+    <br />
+    <hr style='width: 60%;'/>
+    <h1 style="text-align: center; display: flex; justify-content: center">Historial de Operaciones</h1>
+    <h4 style="text-align: center;" id='noOperations'>Aún no has hecho operaciones en la sesión actual</h4>
+    <table style="width: 70%; margin: 0 auto; display: none;" id='operationList'>
+        <thead>
+            <th>Precio</th>
+            <th>Tamaño</th>
+            <th>Fecha</th>
+        </thead>
+    </table>
+    <script>
+        let processType = null;
+        const defaultSet = () => {
+            processType = 1;
+            document.getElementById('win').style.backgroundColor = 'grey';
+            document.getElementById('startValue').innerHTML = 'Ayúdame a ganar, oh sabio Administrator!';
+        }
+        window.onload = () => {
+            defaultSet();
+        };
+        const gainSetting = () => {
+            document.getElementById('win').style.backgroundColor = 'rgb(221, 221, 221)';
+            document.getElementById('lose').style.backgroundColor = 'rgb(221, 221, 221)';
+            document.getElementById('extrawin').style.backgroundColor = 'rgb(221, 221, 221)';
+            document.getElementById('gainButton').style.display = 'none';
+            document.getElementById('gainInput').style.display = 'initial';
+            document.getElementById('gainCancelButton').style.display = 'initial';
+            document.getElementById('startValue').innerHTML = 'Supongo que tendre que hacerlo yo mismo -se pone el guante-';
+            processType = 4;
+        };
+		const cancelGainSetting = () => {
+			document.getElementById('gainButton').style.display = 'initial';
+            document.getElementById('gainInput').style.display = 'none';
+            document.getElementById('gainCancelButton').style.display = 'none';
+            if(processType === 4) {
+                defaultSet();
+            }
+		}
+        const startSet = button => {
+            document.getElementById('win').style.backgroundColor = 'rgb(221, 221, 221)';
+            document.getElementById('lose').style.backgroundColor = 'rgb(221, 221, 221)';
+            document.getElementById('extrawin').style.backgroundColor = 'rgb(221, 221, 221)';
+            document.getElementById(button.id).style.backgroundColor = 'grey';
+            if(button.id === 'win') {
+                document.getElementById('startValue').innerHTML = 'Ayúdame a ganar, oh sabio Administrator!';
+                changeProcessType(button.id);
+                cancelGainSetting();
+            } else if(button.id === 'lose') {
+                document.getElementById('startValue').innerHTML = 'Me creo Robin Hood, debo devolverles el dinero al pueblo';
+                changeProcessType(button.id);
+                cancelGainSetting();
+            } else {
+                document.getElementById('startValue').innerHTML = 'Vamo a comer salchipapa haciendo el hula-hula';
+                changeProcessType(button.id);
+                cancelGainSetting();
+            }
+        };
+        const changeProcessType = id => {
+            switch(id) {
+                case 'win':
+                    processType = 1;
+                    break;
+                case 'lose':
+                    processType = 2
+                    break;
+                case 'extrawin':
+                    processType = 3
+            }
+        }
+        const startProcess = () => {
+            let baseValue = null;
+            let operation = null;
+            let height = Number(document.getElementById('height').value);
+            let cost = Number(document.getElementById('cost').value);
+            let radio = Number(document.getElementById('radio').checked);
+            let gain = Number(document.getElementById('gainInput').value);
+            if(radio === false) {
+                baseValue = Number(document.getElementById('base').value) / 2;
+            } else {
+                baseValue = Number(document.getElementById('base').value);
+            }
+            if(height === 0) {
+                alert('Ingrese un valor de altura');
+                return;
+            } else if(cost === 0) {
+                alert('Ingrese un valor de costo');
+                return;
+            } else if(baseValue === 0) {
+                alert('Ingrese un valor de base');
+                return;
+            } else if(isNaN(height)) {
+                alert('Ingrese un valor de altura válido');
+                return;
+            } else if(isNaN(cost)) {
+                alert('Ingrese un valor de costo válido');
+                return;
+            } else if(isNaN(baseValue)) {
+                alert('Ingrese un valor de base válido');
+                return;
+            }
+            if(processType === 4) {
+                if(gain === 0) {
+                    alert('No ha ingresado ningún valor de ganancia')
+                    return;
+                } else if(isNaN(gain)) {
+                    alert('Debe ingresar un valor numerico')
+                    return;
+                }
+            }
+            switch(processType) {
+                case 1:
+                    operation = (((2 * Math.PI * baseValue * height) + ( 2 * Math.PI * (baseValue ** 2))) * cost * 1.25).toFixed(2);
+					document.getElementById('output').innerHTML = `El precio de su tanque será de $ ${operation}`;
+                    break;
+                case 2:
+                    operation = (((2 * Math.PI * baseValue * height) + ( 2 * Math.PI * (baseValue ** 2))) * cost * 0.75).toFixed(2);
+					document.getElementById('output').innerHTML = `El precio de su tanque será de $ ${operation}`;
+                    break;
+                case 3:
+                    operation = (((2 * Math.PI * baseValue * height) + ( 2 * Math.PI * (baseValue ** 2))) * cost * 2).toFixed(2);
+					document.getElementById('output').innerHTML = `El precio de su tanque será de $ ${operation}`;
+                    break;
+                case 4:
+                    operation = (((2 * Math.PI * baseValue * height) + ( 2 * Math.PI * (baseValue ** 2))) * cost * (gain / 100 + 1)).toFixed(2);
+					document.getElementById('output').innerHTML = `El precio de su tanque será de $ ${operation}`;
+            }
+            let date = new Date().toLocaleString();
+            let size = `${baseValue} x ${height}`;
+            let transaction = {value: operation, date, size};
+            document.getElementById('height').value = '';
+            document.getElementById('cost').value = '';
+            document.getElementById('base').value = '';
+            document.getElementById('gainInput').value = '';
+            document.getElementById('noOperations').style.display = 'none';
+            document.getElementById('operationList').style.display = 'table';
+            document.getElementById('output').style.visibility = 'initial';
+            let tableRow = document.createElement('TR');
+            let valueCell = document.createElement('TD');
+            let transactionValue = document.createTextNode(`$ ${transaction.value}`);
+            let sizeCell = document.createElement('TD');
+            let transactionSize = document.createTextNode(transaction.size);
+            let dateCell = document.createElement('TD');
+            let transactionDate = document.createTextNode(transaction.date);
+            valueCell.appendChild(transactionValue);
+            sizeCell.appendChild(transactionSize);
+            dateCell.appendChild(transactionDate);
+            tableRow.appendChild(valueCell);
+            tableRow.appendChild(sizeCell);
+            tableRow.appendChild(dateCell);
+            let list = document.getElementById('operationList');
+            list.insertBefore(tableRow, list.childNodes[0]);
+        };
+    </script>
+</body>
+</html>

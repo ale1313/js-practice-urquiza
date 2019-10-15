@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Práctica 12 Javascript</title>
+</head>
+<body>
+    <button onclick='start()'>Empezar</button>
+    <script>
+        const start = () => {
+            let numberOne = null,
+            numberTwo = null,
+            validated = true;
+            const validation = number => {
+                if ( isNaN(number) ) {
+                    alert(`${number} es un número inválido. Intente nuevamente.`);
+                    return false;
+                } else if ( number === null || number.trim() === '' ) {
+                    alert('No ha ingresado ningún número. Intente nuevamente.');
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            numberOne = prompt('Ingrese el primer número');
+            validation(numberOne) ? 
+            numberTwo = prompt('Ingrese el segundo número') :
+            validated = false;
+            if (validated) {
+                if (validation(numberTwo)) {
+                    let secondOperationText = '',
+                    secondOperation = (numberOne / numberTwo).toFixed(2);
+                    numberOne = Number(numberOne);
+                    numberTwo = Number(numberTwo);
+                    let firstOperation = numberOne % 5;
+                    ( numberOne > numberTwo ) ?
+                    secondOperationText = `El resultado de dividir el primer número sobre el segundo número es de ${secondOperation}.`:
+                    secondOperationText = 'El primer número no es mayor que el segundo por lo que la segunda operación ha sido salteada.';
+                    let thirdOperation = numberOne * numberTwo;
+                    alert(`El resto de dividir el primer número entre cinco es de ${firstOperation}.\n${secondOperationText}\nEl resultado de multiplicar ambos números es de ${thirdOperation}.`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

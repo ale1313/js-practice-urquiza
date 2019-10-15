@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 9 Javascript</title>
+</head>
+<body>
+    <div style='display: flex; justify-content: space-around'>
+        <h2 style='text-align: center; color: green;'>COTIZACION ACTUAL EURO: $61,96</h2>
+        <h2 style='text-align: center; color: crimson;'>COTIZACION ACTUAL DOLAR: $54,89</h2>
+    </div>
+    <h2 style='text-align: center;'>Elija las divisas que desea convertir</h2>
+    <div style='display: flex; justify-content: center; border: 6px groove lightcoral; padding: 10px; width: 40%; margin: 0 auto;'>
+        <select style='margin: 10px;' id='selectorOne' onchange='changeSelectorHandler(id)'>
+            <option selected>Peso argentino</option>
+            <option>Dólar estadounidense</option>
+            <option>Euro</option>
+        </select>
+        <a style='margin: 10px;'>a</a>
+        <select style='margin: 10px;' id='selectorTwo' onchange='changeSelectorHandler(id)'>
+            <option>Peso argentino</option>
+            <option selected>Dólar estadounidense</option>
+            <option>Euro</option>
+        </select>
+    </div>
+    <div style='display: flex; justify-content: center;'>
+        <label style='display: flex; flex-direction: column; width: 25%; margin: 20px;'>
+            <a id='labelOne' style='text-align: center;'>Monto en peso argentino</a>
+            <input type=number id='inputOne' placeholder="Peso argentino" onkeyup='inputHandler(id, value)'/>
+        </label>
+        <button type="button" style='margin: auto 0;' onclick=invert()>Invertir</button>
+        <label style='display: flex; flex-direction: column; width: 25%; margin: 20px;'>
+            <a id='labelTwo' style='text-align: center;'>Monto en dólar estadounidense</a>
+            <input type=number id='inputTwo' placeholder='Dólar estadounidense'/>
+        </label>
+    </div>
+    <script>
+        document.getElementById('inputTwo').value = 0;
+        let selectorOneArray = document.getElementById('selectorOne');
+        let selectorTwoArray = document.getElementById('selectorTwo');
+        const changeSelectorHandler = id => {
+            if (id === 'selectorOne') {
+                let selectedCurrencyIndex = document.getElementById('selectorOne').selectedIndex;
+                let selectedCurrency = selectorOneArray[selectedCurrencyIndex].text;
+                document.getElementById('labelOne').innerHTML = `Monto en ${selectedCurrency.toLowerCase()}`;
+                document.getElementById('inputOne').placeholder = selectedCurrency;
+            } else {
+                let selectedCurrencyIndex = document.getElementById('selectorTwo').selectedIndex;
+                let selectedCurrency = selectorOneArray[selectedCurrencyIndex].text;
+                document.getElementById('labelTwo').innerHTML = `Monto en ${selectedCurrency.toLowerCase()}`;                
+                document.getElementById('inputTwo').placeholder = selectedCurrency;
+            }
+            let value = document.getElementById('inputOne').value;
+            inputHandler('None', value);
+        }
+        const invert = () => {
+            let selectedFirstCurrency = document.getElementById('labelOne').innerHTML.slice(9);
+            let selectedSecondCurrency = document.getElementById('labelTwo').innerHTML.slice(9);
+            if (selectedFirstCurrency === selectedSecondCurrency) {
+                alert('Ambas divisas son iguales');
+            } else {
+                switch (selectedFirstCurrency) {
+                    case 'peso argentino':
+                        switch (selectedSecondCurrency) {
+                            case 'dólar estadounidense':
+                                document.getElementById('labelOne').innerHTML = 'Monto en dólar estadounidense';
+                                document.getElementById('labelTwo').innerHTML = 'Monto en peso argentino';
+                                document.getElementById('inputOne').placeholder = 'Dólares estadounidenses';
+                                document.getElementById('inputTwo').placeholder = 'Pesos argentinos';
+                                document.getElementById('selectorOne').selectedIndex = 1;
+                                document.getElementById('selectorTwo').selectedIndex = 0;
+                                break;
+                            case 'euro':
+                                document.getElementById('labelOne').innerHTML = 'Monto en euro';
+                                document.getElementById('labelTwo').innerHTML = 'Monto en peso argentino';
+                                document.getElementById('inputOne').placeholder = 'Euros';
+                                document.getElementById('inputTwo').placeholder = 'Pesos argentinos';
+                                document.getElementById('selectorOne').selectedIndex = 2;
+                                document.getElementById('selectorTwo').selectedIndex = 0;
+                                break;
+                        }
+                        break;
+                    case 'dólar estadounidense':
+                        switch (selectedSecondCurrency) {
+                            case 'peso argentino':
+                                document.getElementById('labelOne').innerHTML = 'Monto en peso argentino';
+                                document.getElementById('labelTwo').innerHTML = 'Monto en dólar estadounidense';
+                                document.getElementById('inputOne').placeholder = 'Pesos argentinos';
+                                document.getElementById('inputTwo').placeholder = 'Dólares estadounidenses';
+                                document.getElementById('selectorOne').selectedIndex = 0;
+                                document.getElementById('selectorTwo').selectedIndex = 1;
+                                break;
+                            case 'euro':
+                                document.getElementById('labelOne').innerHTML = 'Monto en euro';
+                                document.getElementById('labelTwo').innerHTML = 'Monto en dólar estadounidense';
+                                document.getElementById('inputOne').placeholder = 'Euros';
+                                document.getElementById('inputTwo').placeholder = 'Dólares estadounidenses';
+                                document.getElementById('selectorOne').selectedIndex = 2;
+                                document.getElementById('selectorTwo').selectedIndex = 1;
+                                break;
+                        }
+                        break;
+                    case 'euro':
+                        switch (selectedSecondCurrency) {
+                            case 'peso argentino':
+                                document.getElementById('labelOne').innerHTML = 'Monto en peso argentino';
+                                document.getElementById('labelTwo').innerHTML = 'Monto en euro';
+                                document.getElementById('inputOne').placeholder = 'Pesos argentinos';
+                                document.getElementById('inputTwo').placeholder = 'Euros';
+                                document.getElementById('selectorOne').selectedIndex = 0;
+                                document.getElementById('selectorTwo').selectedIndex = 2;
+                                break;
+                            case 'dólar estadounidense':
+                                document.getElementById('labelOne').innerHTML = 'Monto en dólar estadounidense';
+                                document.getElementById('labelTwo').innerHTML = 'Monto en euro';
+                                document.getElementById('inputOne').placeholder = 'Dólares estadounidenses';
+                                document.getElementById('inputTwo').placeholder = 'Euros';
+                                document.getElementById('selectorOne').selectedIndex = 1;
+                                document.getElementById('selectorTwo').selectedIndex = 2;
+                                break;
+                        }
+                }
+                let value = document.getElementById('inputOne').value;
+                inputHandler('None', value);
+            }
+        }
+        const inputHandler = (id, value) => {
+            if (value.trim() === '' || isNaN(value)) {
+                document.getElementById('inputTwo').value = 0;
+                return;
+            } else if (value === null) {
+                document.getElementById('inputTwo').value = 0;
+            } else {
+                let firstCurrency = document.getElementById('labelOne').innerHTML.slice(9);
+                let secondCurrency = document.getElementById('labelTwo').innerHTML.slice(9);
+                if (firstCurrency === secondCurrency) {
+                    document.getElementById('inputTwo').value = value;
+                    return;
+                }
+                switch (firstCurrency) {
+                    case 'peso argentino':
+                        switch (secondCurrency) {
+                            case 'dólar estadounidense':
+                                document.getElementById('inputTwo').value = (value / 54.89).toFixed(2);
+                                break;
+                            case 'euro':
+                                document.getElementById('inputTwo').value = (value / 61.96).toFixed(2);
+                                break;
+                        }
+                        break;
+                    case 'dólar estadounidense':
+                        switch (secondCurrency) {
+                            case 'peso argentino':
+                                document.getElementById('inputTwo').value = (value * 54.89).toFixed(2);
+                                break;
+                            case 'euro':
+                                document.getElementById('inputTwo').value = (value / 0.9).toFixed(2);
+                                break;
+                        }
+                        break;
+                    case 'euro':
+                        switch (secondCurrency) {
+                            case 'peso argentino':
+                                document.getElementById('inputTwo').value = (value * 61.96).toFixed(2);
+                                break;
+                            case 'dólar estadounidense':
+                                document.getElementById('inputTwo').value = (value * 0.9).toFixed(2);
+                                break;
+                        }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

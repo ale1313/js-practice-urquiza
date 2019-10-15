@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 7 repetitiva</title>
+    <style>
+        a {
+            font-family: monospace;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    let length = Number(prompt('Ingrese el número de finalización de la pirámide')),
+    counter = '';
+    if(length === 0 || length > 50) {
+        alert('Ingrese un numero mayor a 0 y menor o igual a 50');
+        window.location.reload();
+    } else if(isNaN(length)) {
+        alert('Ha ingresado un valor inválido. Ingrese un numero');
+        window.location.reload();
+    } else {
+        for(i=1; i <= length; i++) {
+            let anchor = document.createElement('A'),
+            lineBreak = document.createElement('BR');
+            counter += i.toString();
+            let text = document.createTextNode(counter);
+            anchor.appendChild(text);
+            document.body.appendChild(anchor);
+            document.body.appendChild(lineBreak);
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 2 Repetitiva</title>
+    <style>
+        .multiples {
+            font-weight: bold;
+        }
+        p {
+            text-align: center;
+        }
+        hr {
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <button onclick=start()>Empezar</button>
+    <script>
+        const start = () => {
+            for(i=1; i<=500; i++) {
+                let paragraph = document.createElement('P');
+                let paraId = i.toString();
+                paragraph.setAttribute('id', paraId);
+                let numb = document.createTextNode(i);
+                paragraph.appendChild(numb);
+                document.body.appendChild(paragraph);
+                if(i % 4 === 0) {
+                    document.getElementById(paraId).style.fontSize = '1.5em';
+                    document.getElementById(paraId).style.color = 'red';
+                    document.getElementById(paraId).innerHTML = `${i} (múltiplo de 4)`;
+                }
+                if(i % 9 === 0) {
+                    document.getElementById(paraId).style.fontSize = '1.5em';
+                    document.getElementById(paraId).style.color = 'blue';
+                    document.getElementById(paraId).innerHTML = `${i} (múltiplo de 9)`;
+                }
+                if(i % 5 === 0) {
+                    let line = document.createElement('HR');
+                    document.body.appendChild(line);
+                }
+            }
+        };
+    </script>
+</body>
+</html>

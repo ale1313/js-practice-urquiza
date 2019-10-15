@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica Javascript 3</title>
+</head>
+<body>
+    <script>
+        const validation = (number, name, balance) => {
+            let numberValidation = '',
+            nameValidation = '',
+            balanceValidation = '',
+            outputName = true,
+            outputNumber = true,
+            outputBalance = true;
+            if (isNaN(number)) {
+                numberValidation = `"${number}" es un número de cuenta inválido.`;
+            } else if (number === null || number.trim() === '') {
+                numberValidation = 'No ha ingresado ningún número de cuenta.';
+            } else {
+                outputNumber = false;
+            }
+
+            if (name === null || name.trim() === '') {
+                nameValidation = 'No ha ingresado ningún nombre de cuenta.';
+            } else if (!isNaN(name)) {
+                nameValidation = `"${name}" es un nombre de cuenta inválido.`;
+            } else {
+                outputName = false;
+            }
+
+            if (isNaN(balance)) {
+                balanceValidation = `"${balance}" es un saldo de cuenta inválido.`;
+            } else if (balance === null || balance.trim() === '') {
+                balanceValidation = 'No ha ingresado ningún saldo de cuenta.';
+            } else {
+                outputBalance = false;
+            }
+
+            if (outputName === true || outputNumber === true || outputBalance === true) {
+                alert(`${numberValidation}\n${nameValidation}\n${balanceValidation}`)
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        do {
+            var numberInput = prompt('Ingrese el nro de cuenta');
+            if (numberInput >= 0 || isNaN(numberInput)) {        
+                nameInput = prompt('Ingrese el nombre de la cuenta'),
+                balanceInput = prompt('Ingrese el saldo de la cuenta'),
+                balanceState = '';
+                    if ( validation(numberInput, nameInput, balanceInput) ) {
+                        let balance = Number(balanceInput);
+                        if (balance > 0) {
+                            balanceState = 'acreedor'
+                        } else if (balance === 0) {
+                            balanceState = 'nulo'
+                        } else {
+                            balanceState = 'deudor'
+                        }
+
+                        alert(`Número de cuenta: ${numberInput}\nNombre de la cuenta: ${nameInput}\nSaldo de la cuenta: $${balance}\nEl estado de la cuenta es ${balanceState}.`);
+                    }
+            }
+        } while (Number(numberInput) >= 0 || isNaN(numberInput))
+    </script>
+</body>
+</html>

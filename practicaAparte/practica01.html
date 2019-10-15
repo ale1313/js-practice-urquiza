@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Casi Prueba</title>
+</head>
+<body>
+	<input type='button' value='Empezar' onclick='start()' style='width: 10%; height: 5%; position: absolute; left: 45%; top: 52.5%;'/>
+    <script>
+
+		function start() {
+			var texto = prompt("Ingrese un texto"),
+			containerArray = [],
+			expArray = [/a/gi, /e/gi, /i/gi, /o/gi, /u/gi, /\d/g, /\s/g],
+			vocalsAccumulator = 0,
+			totalChars = 0,
+			totalConsonants = 0;
+
+			for (i = 0 ; i < expArray.length ; i++) {
+				containerArray[i] = texto.match(expArray[i]);
+				if (containerArray[i] === null) {
+					containerArray[i] = 0;
+				} else if (i < 5) {
+					containerArray[i] = containerArray[i].length;
+					vocalsAccumulator += containerArray[i];
+				} else if (i === 5) {
+					containerArray[i] = containerArray[i].length;
+				} else {
+					containerArray[i] = containerArray[i].length;
+				}
+			}
+
+			totalChars = texto.length;
+			totalConsonants = totalChars - vocalsAccumulator - containerArray[5] - containerArray[6];
+
+			alert
+			(
+			'Texto ingresado: ' + texto +
+			'\nVocales A: ' + containerArray[0] +
+			'\nVocales E: ' + containerArray[1] +
+			'\nVocales I: ' + containerArray[2] +
+			'\nVocales O: ' + containerArray[3] +
+			'\nVocales U: ' + containerArray[4] +
+			'\nTotal de vocales: ' + vocalsAccumulator +
+			'\nTotal de consonantes: ' + totalConsonants +
+			'\nTotal de números: ' + containerArray[5] +
+			'\nTotal de espacios en blanco: ' + containerArray[6] +
+			'\nTotal de caracteres: ' + totalChars
+			);
+		}
+
+
+    </script>
+</body>
+</html>

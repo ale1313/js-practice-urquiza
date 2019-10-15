@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 1 Javascript</title>
+</head>
+<body>
+    <script>
+        let endWord = '',
+        finish = false;
+        const finishCycle = () => {
+            finish = true;
+        }
+        do {
+            let n = prompt('Ingrese un numero entre 0 y 999');
+            (n.length > 1) ?
+            endWord = 'dígitos' :
+            endWord = 'dígito'
+            if(isNaN(n) || Number(n) < 0 || Number(n) > 999 || n.trim() === '') {
+                alert('Ha ingresado un valor inválido. Intente nuevamente');
+            } else if (n !== '0') {
+                let digits = n.length;
+                let paragraph = document.createElement('P');
+                let text = document.createTextNode(`El numero ${n} tiene ${digits} ${endWord}`);
+                paragraph.appendChild(text);
+                document.body.appendChild(paragraph);
+            } else {
+                finishCycle();
+            }
+        }
+        while (!finish);
+    </script>
+</body>
+</html>

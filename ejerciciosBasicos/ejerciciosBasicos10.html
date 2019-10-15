@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 10 Javascript</title>
+</head>
+<body>
+    <button onclick='start()'>Empezar</button>
+    <script>
+        const start = () => {
+            let numberOne = prompt('Ingrese un primer numero');
+            if (validate(numberOne)) {
+                return;
+            }
+            let numberTwo = prompt('Ingrese un segundo numero');
+            if (validate(numberTwo)) {
+                return;
+            }
+
+            numberOne = Number(numberOne);
+            numberTwo = Number(numberTwo);
+            operation(numberOne, numberTwo)
+        }
+
+        const validate = number => {
+            if (isNaN(number) || number === null || number.trim() === '') {
+                alert('El número ingresado es inválido');
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        const operation = (n1, n2) => {
+            if ( n1 > 0 && n2 > 0) {
+                let op = n1 + n2;
+                alert(`La suma de ambos números es ${op}`);
+            } else if ( n1 < 0 && n2 < 0) {
+                let op = n1 - n2;
+                alert(`La resta de ambos números es ${op}`);
+            } else {
+                if (n1 === 0) {
+                    alert('Uno de los dos números es cero. El culpable es el primer número.');
+                } else {
+                    alert('Uno de los dos números es cero. El culpable es el segundo número.');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 1</title>
+</head>
+<body>
+	<button onclick="ordenar()" >Ordenar</button>
+	<p id="sort1"></p>
+	<p id="sort2"></p>
+	<p id="og"><p/>
+	<script>
+		let holalala  = [33, 2, 36, 55, 4, 1];
+		const ordenar = () => {
+			const sort1 = () => {
+				holalala.sort((value1, value2) => value1 - value2);
+				return holalala;
+			}
+			const sort2 = () => {
+				holalala.sort((value1, value2) => value2 - value1);
+				return holalala;
+			}
+			document.getElementById("sort1").innerHTML = `El array de menor a mayor es ${sort1()}`;
+			document.getElementById("sort2").innerHTML = `El array de menor a mayor es ${sort2()}`;
+			document.getElementById("og").innerHTML = `El array original es ${holalala}`;
+		}
+    </script>        
+</body>
+</html>

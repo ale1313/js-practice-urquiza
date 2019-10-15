@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 8 Javascript</title>
+</head>
+<body>
+    <label>
+        <p>Ingrese las horas trabajadas:</p>
+        <input type=number id='hoursInput' placeholder="Horas"/>    
+    </label>
+    <label>
+        <p>Ingrese el pago por hora:</p>
+        <input type=number id='payInput' placeholder="Pago"/>    
+    </label>
+    <br />
+    <button onclick=start() style='margin-top: 20px;'>Calcular</button>
+    <p id='output'></p>
+    <script>
+        const createOutput = (total, extrasQuantity = null) => {
+            if (total <= 30000) {
+                if (!extrasQuantity) {
+                    document.getElementById('output').innerHTML = `El total a pagar es de $${total}.`;
+                } else {
+                    document.getElementById('output').innerHTML = `El total a pagar es de $${total}, en el cual se adjuntan ${extrasQuantity} horas extras trabajadas.`;
+                }
+            } else {
+                total -= total * 0.1;
+                let retention = total - total * 0.9; 
+                if (!extrasQuantity) {
+                    document.getElementById('output').innerHTML = `El total a pagar es de $${total}, en el cual se descuentan $${retention} en concepto de impuestos.`;
+                } else {
+                    document.getElementById('output').innerHTML = `El total a pagar es de $${total}, en el cual se adjuntan ${extrasQuantity} horas extras trabajadas y se descuentan $${retention} en concepto de impuestos.`;
+                }
+            }
+        }
+        const start = () => {
+            let hours = document.getElementById('hoursInput').value;
+            let pay = document.getElementById('payInput').value;
+            if (isNaN(hours) || Number(hours) < 0) {
+                alert('Ha ingresado un valor inválido de horas. Intente nuevamente.');
+                return;
+            } else if (isNaN(pay) || Number(pay) < 0) {
+                alert('Ha ingresado un valor inválido de paga. Intente nuevamente.');
+                return;
+            } else if (hours.trim() === '') {
+                alert('No ha ingresado ningún valor de horas.');
+                return;
+            } else if (pay.trim() === '') {
+                alert('No ha ingresado ningún valor de paga.');
+                return;
+            } else {
+                document.getElementById('hoursInput').value = null;
+                document.getElementById('payInput').value = null;
+                if (Number(hours) > 170) {
+                    let total = Number(hours) * Number(pay) + (Number(hours) - 170) * 2 * Number(pay);
+                    let extrasQuantity = Number(hours) - 170;
+                    createOutput(total, extrasQuantity);
+                } else {
+                    let total = Number(hours) * Number(pay);
+                    createOutput(total);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

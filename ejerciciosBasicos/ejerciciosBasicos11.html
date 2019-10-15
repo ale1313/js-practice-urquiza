@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 11 Javascript</title>
+</head>
+<body>
+    <input type='number' id='baseInput' placeholder="Base (m)"/>
+    <input type='number' id='heightInput' placeholder="Altura (m)"/>
+    <button onclick='start()' >Calcular</button>
+    <p id='output'></p>
+    <script>
+        const start = () => {
+            let base = document.getElementById('baseInput').value;
+            let height = document.getElementById('heightInput').value;
+            validation(base, height);
+        }
+
+        const validation = (base, height) => {
+            if ( isNaN(base) || base.trim() === '' ) {
+                alert('Ha ingresado un valor de base inválido. Intente nuevamente.');
+                return;
+            } else if ( Number(base) === 0 ) {
+                alert('Por favor, ingrese un valor de base distinto de cero.');
+                return;
+            }
+
+            if ( isNaN(height) || height.trim() === '' ) {
+                alert('Ha ingresado un valor de altura inválido. Intente nuevamente.');
+                return;
+            } else if ( Number(height) === 0 ) {
+                alert('Por favor, ingrese un valor de altura distinto de cero.');
+                return;
+            }
+            operationStart(base, height);
+        }
+
+        const operationStart = (base, height) => {
+            base = Number(base);
+            height = Number(height);
+            let operation = (base * height) / 2;
+            document.getElementById('output').innerHTML = `La superficie total del triángulo es de ${operation} m.`;
+            document.getElementById('baseInput').value = null;
+            document.getElementById('heightInput').value = null;
+        }
+    </script>
+</body>
+</html> 

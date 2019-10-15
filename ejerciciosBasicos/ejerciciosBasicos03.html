@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 3</title>
+</head>
+<body>
+    <h1>Es un año bisiesto?</h1>
+    <p>Ingresa un año del último siglo y descúbrelo</p>
+    <input type='number' id='yearInput' />
+    <button onclick=bisiesto()>Enviar</button>
+    <p id='yearOutput'></p>
+    <script>
+        const bisiesto = () => {
+            let yearInput = Number(document.getElementById('yearInput').value);
+            if(yearInput !== NaN) {
+                if(yearInput >= 2000) {
+                    if(yearInput % 4 === 0 && yearInput % 100 !== 0 || yearInput % 400 === 0) {
+                        var result = 'El año es bisiesto';
+                    } else {
+                        var result = 'El año no es bisiesto';
+                    }                    
+                } else {
+                    var result = 'El año no pertenece al último siglo';
+                }
+            } else {
+                var result = 'El valor ingresado no es un número';
+            }
+        document.getElementById('yearOutput').innerHTML = result;        
+        };
+    </script>
+</body>
+</html>

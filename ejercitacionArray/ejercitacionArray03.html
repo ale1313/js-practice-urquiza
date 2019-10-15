@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 2 Arrays</title>
+</head>
+<body>
+	<script>
+		var found = false;
+		const output = i => {
+			if(found) {
+				alert(`El puto array contiene la palabra nieve en el indice ${i}`)
+			} else {
+				alert('El puto array no tiene una mierda')
+			}
+		}
+		const miArray = ['Moto', 'soto', 'Abaco', 'abeja', 'Sapo', 'Zumba', 'barco'];
+		for(i=0;i < miArray.length;i++) {
+			if (miArray[i] === 'nieve') {
+				found = true;
+				output(i);
+				break;
+			}
+		}
+		if (found === false) {
+		output()
+		}
+    </script>        
+</body>
+</html>

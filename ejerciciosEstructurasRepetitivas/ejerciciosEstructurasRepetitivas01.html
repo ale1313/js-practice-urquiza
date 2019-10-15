@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 1 Repetitiva</title>
+</head>
+<body>
+    <script>
+	let name = prompt('Ingrese el nombre del alumno'),
+	gradeAcumulattor = 0,
+	gradeCounter = 0,
+	gradePointAverage = 0,
+	exit = 'S';
+	const operation = (grades, gradesNumber) => {
+		gpa = grades / gradesNumber; 
+		if (gpa < 3 ){
+			alert(`${name} tuvo un resultado muy deficiente. Su promedio es de ${gpa}.`)
+		} else if (gpa < 5 && gpa >= 3){
+			alert(`${name} tuvo un resultado insuficiente. Su promedio es de ${gpa}.`)
+		} else if (gpa < 6 && gpa >=5){
+			alert(`${name} tuvo un resultado suficiente. Su promedio es de ${gpa}.`)
+		} else if (gpa < 7 && gpa >= 6 ){
+			alert(`${name} tuvo un resultado bueno. Su promedio es de ${gpa}.`)
+		} else if (gpa < 9 && gpa >= 7){
+			alert(`${name} tuvo un resultado notable. Su promedio es de ${gpa}.`)
+		} else {
+			alert(`${name} tuvo un resultado sobresaliente. Su promedio es de ${gpa}.`)
+		}
+	}
+	do {
+		let grade = Number(prompt('Ingrese la nota (1-10)'));
+		if(grade < 0 || grade > 10 || isNaN(grade)) {
+			alert('El valor ingresado no es válido');
+		} else {
+			gradeAcumulattor += grade;
+			gradeCounter += 1;
+			exit = prompt('Desea ingresar más notas? S/N');
+			if(exit === 'N') {
+				operation(gradeAcumulattor, gradeCounter)
+			}
+		}
+	} while (exit !== 'N');
+    </script>        
+</body>
+</html>

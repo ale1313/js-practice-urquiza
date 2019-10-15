@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 4 Javascript</title>
+</head>
+<body>
+    <script>
+		let cont1 = 0,
+		cont2 = 0,
+		cont3 = 0,
+		cont4 = 0
+		do {
+		let dni = prompt("Ingrese su DNI");
+		if(Number(DNI) !== 0) {
+			cont1++
+			Edad = prompt("Ingrese su Edad")
+			Sexo = prompt("Ingrese su Sexo(femenino  o  masculino)")
+			if (Sexo === 'masculino') {
+				cont2++
+			} else if (Sexo === 'femenino') {
+				cont3++
+			}
+			if(Number(Edad) >= 16 && Number(Edad) <= 65) {
+				cont4++
+			}
+		}
+		} while (Number(DNI) !== 0)
+		alert("Cantidad total de personas censadas: " + cont1)
+		alert("Cantidad de varones: " + cont2)
+		alert("Cantidad de mujeres: " + cont3)
+		alert("Cantidad de varones cuya edad varía entre 16 y 65 años: " + cont4)
+    </script>
+</body>
+</html>

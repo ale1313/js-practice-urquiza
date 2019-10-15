@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 5 repetitiva</title>
+</head>
+<body>
+    <script>
+		let text = '',
+		textAccumulator = '';
+		while(text !== null) {
+			text = prompt('Ingrese una cadena de texto');
+			console.log(text)
+			if(text !== null) {
+				textAccumulator += `-${text}`;
+			}
+		}
+		alert(`La cadena de texto es:\n${textAccumulator}`);
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 1</title>
+</head>
+<body>
+    <script>
+	 const info = string => {
+		if (!isNaN(string) || string === null || string.trim() === ""){
+			alert("Ingrese una cadena")
+		} else if (string === string.toUpperCase()){
+			alert("La cadena esta formada por mayusculas")
+		} else if (string === string.toLowerCase()){
+			alert("La cadena esta formada por minusculas")
+		} else {
+			alert("La cadena esta formada por minusculas y mayusculas")
+		}
+	}
+	let conchadetumadre = prompt("Ingrese una cadena");
+	info(conchadetumadre);
+    </script>
+</body>
+</html>
