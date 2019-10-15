@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Practica 3 Funciones</title>
+  </head>
+  <body>
+    <input type="text" placeholder="First number" id="firstNumberInput" />
+    <input type="text" placeholder="Second number" id="secondNumberInput" />
+    <button onclick="getNumbers()">Get numbers</button>
+    <script>
+      const getNumbers = value => {
+        let n1 = document.getElementById("firstNumberInput").value,
+          n2 = document.getElementById("secondNumberInput").value;
+        if (isNaN(n1) || n1.trim() === "") {
+          alert("Ingrese un primer número correcto");
+          return;
+        }
+        if (isNaN(n2) || n2.trim() === "") {
+          alert("Ingrese un segundo número correcto");
+          return;
+        }
+        document.getElementById("output") !== null
+          ? document.getElementById("output").remove()
+          : null;
+        n1 = Number(n1);
+        n2 = Number(n2);
+        if (n1 > n2) {
+          firstParameter = n2;
+          secondParameter = n1;
+        } else {
+          firstParameter = n1;
+          secondParameter = n2;
+        }
+        let divisorNode = document.createElement("DIV");
+        divisorNode.setAttribute("id", "output");
+        for (i = firstParameter + 1; i < secondParameter; i++) {
+          let paragraphNode = document.createElement("P");
+          let text = document.createTextNode(`${i}`);
+          paragraphNode.appendChild(text);
+          divisorNode.appendChild(paragraphNode);
+        }
+        document.body.appendChild(divisorNode);
+        document.getElementById("firstNumberInput").value = "";
+        document.getElementById("secondNumberInput").value = "";
+      };
+    </script>
+  </body>
+</html>

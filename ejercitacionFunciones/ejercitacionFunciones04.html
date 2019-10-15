@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Practica 4 Funciones</title>
+  </head>
+  <body>
+    <button onclick="dateSetter()">Configurar fecha</button>
+    <script>
+      const dateSetter = () => {
+        const dateHandler = date => {
+          const months = [
+            "enero",
+            "febrero",
+            "marzo",
+            "abril",
+            "mayo",
+            "junio",
+            "julio",
+            "agosto",
+            "septiembre",
+            "octubre",
+            "noviembre",
+            "diciembre"
+          ];
+          let day = date.slice(8, 10),
+            monthString = date.slice(5, 7),
+            month = months[Number(monthString) - 1],
+            year = date.slice(0, 4);
+          alert(`Hoy es ${day} de ${month} de ${year}`);
+        };
+        let datePrompt = prompt("Ingrese una fecha (formato: MM/DD/AAAA)");
+        if (
+          datePrompt === null ||
+          datePrompt.trim() === "" ||
+          datePrompt.length !== 10
+        ) {
+          alert("Ingrese una fecha correcta (formato: MM/DD/AAAA)");
+        } else {
+          try {
+            let date = new Date(datePrompt).toISOString();
+            dateHandler(date);
+          } catch (e) {
+            alert("Ingrese una fecha (formato: MM/DD/AAAA)");
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
