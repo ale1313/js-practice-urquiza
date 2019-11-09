@@ -1,3 +1,51 @@
 {
+  "window.zoomLevel": 0.4,
+  "editor.fontSize": 13,
+  "editor.tabSize": 2,
+  "prettier.eslintIntegration": true,
+  "prettier.jsxBracketSameLine": true,
+  // formatting using eslint
+  // let editor format using prettier for all other files
+  "editor.formatOnSave": true,
+  // disable editor formatting, so eslint can handle it
+  "[javascript]": {
     "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+  // available through eslint plugin in vscode
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "explorer.confirmDragAndDrop": false,
+  "flow.useNPMPackagedFlow": true,
+  "javascript.validate.enable": false,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "eslint.packageManager": "yarn",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ]
 }
