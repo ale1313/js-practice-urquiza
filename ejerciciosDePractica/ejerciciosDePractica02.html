@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Practica 2 Javascript</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-    let sum = null,
-    finish = false;
-    const finishCycle = sum => {
+      let sum = null;
+      let finish = false;
+      const finishCycle = (numberSum) => {
         let endStatement = '';
-        if (sum === 0) {
-            endStatement = 'igual a cero';
-        } else if (sum < 0) {
-            endStatement = 'menor a cero';
+        if (numberSum === 0) {
+          endStatement = 'igual a cero';
+        } else if (numberSum < 0) {
+          endStatement = 'menor a cero';
         } else {
-            endStatement = 'mayor a cero';
+          endStatement = 'mayor a cero';
         }
-        let paragraph = document.createElement('P');
-        let text = document.createTextNode(`La suma total es de ${sum}, la cual es ${endStatement}.`);
+        const paragraph = document.createElement('P');
+        const text = document.createTextNode(
+          `La suma total es de ${numberSum}, la cual es ${endStatement}.`,
+        );
         paragraph.appendChild(text);
         document.body.appendChild(paragraph);
         finish = true;
-    }
-    do {
-        let n = prompt('Ingrese un numero distinto a 9999');
-        if(isNaN(n) || n.trim() === '') {
-            alert('Ha ingresado un valor inválido. Intente nuevamente.');
+      };
+      do {
+        const n = prompt('Ingrese un numero distinto a 9999');
+        if (isNaN(n) || n.trim() === '') {
+          alert('Ha ingresado un valor inválido. Intente nuevamente.');
         } else if (n !== '9999') {
-            sum += Number(n);
+          sum += Number(n);
         } else {
-            finishCycle(sum);
+          finishCycle(sum);
         }
-    } while (!finish)
+      } while (!finish);
     </script>
-</body>
+  </body>
 </html>
