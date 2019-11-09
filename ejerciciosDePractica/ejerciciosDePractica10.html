@@ -13,24 +13,24 @@
       const getTables = () => {
         let valid = false;
         let value;
-        let output = '';
+        let output = "";
         while (!valid) {
-          value = prompt('Ingrese un valor entre 1 y 10');
+          value = prompt("Ingrese un valor entre 1 y 10");
           if (isNaN(value)) {
-            alert('Sólo tiene permitido ingresar valores numéricos');
-          } else if (value === null || value.trim() === '') {
-            alert('No ha ingresado ningún valor. Intente nuevamente.');
+            alert("Sólo tiene permitido ingresar valores numéricos");
+          } else if (value === null || value.trim() === "") {
+            alert("No ha ingresado ningún valor. Intente nuevamente.");
           } else {
             value = Number(value);
             value < 1 || value > 10
               ? alert(
-                  'El valor se encuentra fuera de los límites establecidos.',
+                  "El valor se encuentra fuera de los límites establecidos."
                 )
               : (valid = true);
           }
         }
         value = value.toString();
-        for (let i = 1; i < 11; i += 1) {
+        for (let i = 1; i < 13; i += 1) {
           output += `${value} x ${i} = ${value * i}\n`;
         }
         alert(output);
