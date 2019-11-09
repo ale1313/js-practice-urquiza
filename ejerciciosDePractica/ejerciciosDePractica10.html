@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Practica 10 Javascript</title>
+  </head>
+  <body>
+    <button onclick="getTables()">Obtener tablas de multiplicar</button>
+    <script>
+      // eslint-disable-next-line no-unused-vars
+      const getTables = () => {
+        let valid = false;
+        let value;
+        let output = '';
+        while (!valid) {
+          value = prompt('Ingrese un valor entre 1 y 10');
+          if (isNaN(value)) {
+            alert('Sólo tiene permitido ingresar valores numéricos');
+          } else if (value === null || value.trim() === '') {
+            alert('No ha ingresado ningún valor. Intente nuevamente.');
+          } else {
+            value = Number(value);
+            value < 1 || value > 10
+              ? alert(
+                  'El valor se encuentra fuera de los límites establecidos.',
+                )
+              : (valid = true);
+          }
+        }
+        value = value.toString();
+        for (let i = 1; i < 11; i += 1) {
+          output += `${value} x ${i} = ${value * i}\n`;
+        }
+        alert(output);
+      };
+    </script>
+  </body>
+</html>
