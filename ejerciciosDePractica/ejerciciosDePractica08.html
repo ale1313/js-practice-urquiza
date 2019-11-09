@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Practica 8 Javascript</title>
+  </head>
+  <body>
+    <button onclick="listRegister()">Registrar listas</button>
+    <script>
+      // eslint-disable-next-line no-unused-vars
+      const listRegister = () => {
+        const lists = { list1: undefined, list2: undefined };
+        for (let i = 0; i < 2; i++) {
+          const list = [];
+          for (let j = 0; j < 3; j++) {
+            const val = prompt(
+              `Ingrese el ${
+                j === 2 ? "tercer" : j === 1 ? "segundo" : "primer"
+              } valor de la ${i === 0 ? "primer" : "segunda"} lista`
+            );
+            if (isNaN(val)) {
+              alert("Sólo tiene permitido ingresar números");
+              j--;
+            } else if (val === null || val.trim() === "") {
+              alert("No ha ingresado ningún valor");
+              j--;
+            } else {
+              list.push(val);
+            }
+          }
+          i === 0 ? (lists.list1 = list) : (lists.list2 = list);
+        }
+        const { list1, list2 } = lists;
+        let list1Value = 0;
+        let list2Value = 0;
+        list1.forEach(val => (list1Value += val));
+        list2.forEach(val => (list2Value += val));
+        alert(
+          list1Value > list2Value
+            ? "La lista 1 es mayor que la lista 2"
+            : list1Value < list2Value
+            ? "La lista 2 es mayor que la lista 1"
+            : "Ambas listas son iguales en valor"
+        );
+      };
+    </script>
+  </body>
+</html>
