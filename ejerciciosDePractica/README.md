@@ -26,9 +26,9 @@
 
 7. - [x] En una empresa trabajan 25 empleados cuyos sueldos oscilan entre $10.000 y $50.000. Realizar un programa que lea los sueldos que cobra cada empleado e informe cuántos empleados cobran entre $10.000 y $25.000 y cuántos cobran entre $25.000 y $50.000, además el programa deberá informar el importe que gasta la empresa en sueldos al personal.
 
-8. - [ ] Realizar un programa que permita cargar dos listas de 3 valores cada una. Informar con un mensaje cual de las dos listas tiene un valor acumulado mayor (mensajes: “Lista 1 mayor que 2”', “Lista 2 mayor que 1”, “Listas 1 y 2 iguales”).
+8. - [x] Realizar un programa que permita cargar dos listas de 3 valores cada una. Informar con un mensaje cual de las dos listas tiene un valor acumulado mayor (mensajes: “Lista 1 mayor que 2”', “Lista 2 mayor que 1”, “Listas 1 y 2 iguales”).
 
-9. - [ ] Confeccionar un programa que lea 3 pares de datos, cada par de datos corresponde a la medida de la base y la altura de un triángulo. El programa deberá informar:
+9. - [x] Confeccionar un programa que lea 3 pares de datos, cada par de datos corresponde a la medida de la base y la altura de un triángulo. El programa deberá informar:
 
    1. De cada triángulo la medida de su base, su altura y superficie.
    2. La cantidad de triángulos cuya superficie es mayor a 12.
