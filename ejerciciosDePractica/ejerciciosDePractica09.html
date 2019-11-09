@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Practica 9 Javascript</title>
+  </head>
+  <body>
+    <button onclick="dimensionsRegister()">Registrar dimensiones</button>
+    <script>
+      // eslint-disable-next-line no-unused-vars
+      const dimensionsRegister = () => {
+        let triangle1 = {};
+        let triangle2 = {};
+        let triangle3 = {};
+        let counter = 0;
+        const countHandler = (...args) => {
+          const duplicatedArgs = Array.from(args);
+          duplicatedArgs.forEach((val) => {
+            // eslint-disable-next-line no-unused-expressions
+            val > 12 ? (counter += 1) : null;
+          });
+        };
+        class Triangle {
+          constructor(base, height) {
+            this.base = base;
+            this.height = height;
+          }
+        }
+        for (let i = 0; i < 3; i++) {
+          const dimensions = [];
+          for (let j = 0; j < 2; j++) {
+            const val = prompt(
+              `Ingrese la ${j === 1 ? 'base' : 'altura'} del ${
+                i === 0 ? 'primer' : i === 1 ? 'segundo' : 'tercer'
+              } triángulo (cm.)`,
+            );
+            if (isNaN(val)) {
+              alert('Sólo tiene permitido ingresar números');
+              j -= 1;
+            } else if (val === null || val.trim() === '') {
+              alert('No ha ingresado ningún valor');
+              j -= 1;
+            } else {
+              dimensions.push(val);
+            }
+          }
+          if (i === 0) {
+            triangle1 = new Triangle(...dimensions);
+          } else if (i === 1) {
+            triangle2 = new Triangle(...dimensions);
+          } else {
+            triangle3 = new Triangle(...dimensions);
+          }
+        }
+        const area1 = (triangle1.base * triangle1.height) / 2;
+        const area2 = (triangle2.base * triangle2.height) / 2;
+        const area3 = (triangle3.base * triangle3.height) / 2;
+        countHandler(area1, area2, area3);
+        const output1 = `El primer triángulo tiene una base de ${triangle1.base} cm., una altura de ${triangle1.height} cm., y una superficie de ${area1} cm.\n`;
+        const output2 = `El segundo triángulo tiene una base de ${triangle2.base} cm., una altura de ${triangle2.height} cm., y una superficie de ${area2} cm.\n`;
+        const output3 = `El tercer triángulo tiene una base de ${triangle3.base} cm., una altura de ${triangle3.height} cm., y una superficie de ${area3} cm.\n`;
+        const output4 = counter !== 0
+            ? `Hay ${counter} triángulos cuya superficie es mayor a 12.`
+            : 'Ningún triángulo tiene una superficie mayor a 12.';
+        alert(`${output1}${output2}${output3}${output4}`);
+      };
+    </script>
+  </body>
+</html>
