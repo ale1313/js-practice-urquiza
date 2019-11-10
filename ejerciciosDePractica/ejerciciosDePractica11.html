@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Practica 11 Javascript</title>
+  </head>
+  <body>
+    <button onclick="dimensionsRegister()">Registrar dimensiones</button>
+    <script>
+      // eslint-disable-next-line no-unused-vars
+      const dimensionsRegister = () => {
+        const triangles = {};
+        let output = '';
+        const types = { equilátero: 0, escaleno: 0, isósceles: 0 };
+        class Triangle {
+          constructor(side1, side2, side3, type) {
+            this.side1 = side1;
+            this.side2 = side2;
+            this.side3 = side3;
+            this.type = type;
+          }
+        }
+
+        for (let i = 0; i < 10; i += 1) {
+          const dimensions = [];
+          for (let j = 0; j < 3; j += 1) {
+            let val = prompt(
+              `Ingrese el ${
+                j === 0 ? 'primer' : j === 1 ? 'segundo' : 'tercer'
+              } lado del triángulo ${i + 1} (cm.)`,
+            );
+            if (isNaN(val)) {
+              alert('Sólo tiene permitido ingresar números');
+              j -= 1;
+            } else if (val === null || val.trim() === '') {
+              alert('No ha ingresado ningún valor');
+              j -= 1;
+            } else {
+              val = Number(val);
+              dimensions.push(val);
+            }
+          }
+          if (
+            dimensions[0] === dimensions[1]
+      && dimensions[0] === dimensions[2]
+          ) {
+            dimensions.push('equilátero');
+            types.equilátero += 1;
+          } else if (
+            dimensions[0] !== dimensions[1]
+      && dimensions[0] !== dimensions[2]
+      && dimensions[1] !== dimensions[2]
+          ) {
+            dimensions.push('escaleno');
+            types.escaleno += 1;
+          } else {
+            dimensions.push('isósceles');
+            types.isósceles += 1;
+          }
+          triangles[i] = new Triangle(...dimensions);
+          output += `El triángulo ${i} es ${triangles[i].type}\n`;
+        }
+        const minValue = Math.min(
+          types.equilátero,
+          types.isósceles,
+          types.escaleno,
+        );
+        const newArray = Object.entries(types);
+        const minTypeGetter = () => {
+          const minType = newArray.filter((type) => type[1] === minValue);
+          return minType[0][0];
+        };
+        output += `El tipo de triángulo con menor número de unidades es el ${minTypeGetter()}, con ${minValue} ${
+          minValue === 1 ? 'unidad' : 'unidades'
+        }.\n`;
+        output += `Hay ${types.equilátero} ${
+          types.equilátero === 1
+            ? ' triángulo equilátero'
+            : 'triángulos equiláteros'
+        }, ${types.isósceles} ${
+          types.isósceles === 1 ? 'triángulo isósceles' : 'triángulos isósceles'
+        }, y ${types.escaleno} ${
+          types.escaleno === 1 ? 'triángulo escaleno' : 'triángulos escalenos'
+        }.`;
+        alert(output);
+      };
+    </script>
+  </body>
+</html>
