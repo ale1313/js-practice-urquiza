@@ -33,9 +33,9 @@
    1. De cada triángulo la medida de su base, su altura y superficie.
    2. La cantidad de triángulos cuya superficie es mayor a 12.
 
-10. - [ ] Confeccionar un programa que permita ingresar un valor del 1 al 10 y nos muestre la tabla de multiplicar del mismo (los primeros 12 términos). Ejemplo: Si ingreso 3 deberá aparecer en pantalla los valores 3, 6, 9, hasta el 36.
+10. - [x] Confeccionar un programa que permita ingresar un valor del 1 al 10 y nos muestre la tabla de multiplicar del mismo (los primeros 12 términos). Ejemplo: Si ingreso 3 deberá aparecer en pantalla los valores 3, 6, 9, hasta el 36.
 
-11. - [ ] Realizar un programa que lea los lados de 10 triángulos e informar:
+11. - [x] Realizar un programa que lea los lados de 10 triángulos e informar:
 
     1. De cada uno que tipo de triángulo es: equilátero (tres lados iguales), isósceles (dos lados iguales), o escaleno (ningún lado igual).
     2. Cantidad de triángulos de cada tipo.
